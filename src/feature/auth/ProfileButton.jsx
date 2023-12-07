@@ -16,8 +16,12 @@ import {
 } from "@/components/ui/dialog";
 
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { LoginModal } from "@/src/feature/auth/LoginModal"
+import { LoginModal } from "@/src/feature/auth/LoginModal";
+import { RegisterModal } from "@/src/feature/auth/RegisterModal";
 import { signOut } from "next-auth/react";
+
+import Link from "next/link";
+import { User2 } from "lucide-react";
 
 const ProfileButton = ({ userSession }) => {
   return (
@@ -26,14 +30,19 @@ const ProfileButton = ({ userSession }) => {
         <Avatar>
           <AvatarImage src={userSession?.image} />
           <AvatarFallback>
-            <img src="/img/products/placeholder.jpg"></img>
+            <img src="/img/placeholder.jpg"></img>
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         {userSession ? (
           <>
-            <DropdownMenuItem>Account</DropdownMenuItem>
+            <DropdownMenuItem asChild className="cursor-pointer">
+              <Link href="/profil">
+                <User2 className="mr-2 h-4 w-4" />
+                Account
+              </Link>
+            </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => {
                 signOut();
@@ -45,7 +54,19 @@ const ProfileButton = ({ userSession }) => {
           </>
         ) : (
           <>
-            <DropdownMenuItem>Sign In</DropdownMenuItem>
+            <Dialog>
+              <DialogTrigger asChild>
+                <DropdownMenuItem
+                  onSelect={(e) => e.preventDefault()}
+                  className="cursor-pointer"
+                >
+                  Sign In
+                </DropdownMenuItem>
+              </DialogTrigger>
+              <DialogContent>
+                <RegisterModal />
+              </DialogContent>
+            </Dialog>
             <Dialog>
               <DialogTrigger asChild>
                 <DropdownMenuItem

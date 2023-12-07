@@ -15,18 +15,13 @@ import { Label } from "@/components/ui/label";
 
 import { signIn } from "next-auth/react";
 
-export function LoginModal() {
+export function RegisterModal() {
   return (
     <Card>
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl">Login to your account</CardTitle>
+        <CardTitle className="text-2xl">Create an account</CardTitle>
         <CardDescription>
-          <p className="text-muted-foreground">
-            Don't have an account?
-            <a href="#" className="text-muted-foreground ml-1">
-              Sign up
-            </a>
-          </p>
+          Enter your email below to create your account
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
@@ -62,15 +57,15 @@ export function LoginModal() {
         </div>
         <div className="grid gap-2">
           <Label htmlFor="email">Email</Label>
-          <Input disabled id="email" type="email" placeholder="m@example.com" />
+          <Input disable id="email" type="email" placeholder="m@example.com" />
         </div>
         <div className="grid gap-2">
           <Label htmlFor="password">Password</Label>
-          <Input disabled id="password" type="password" />
+          <Input disable id="password" type="password" />
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full">Login</Button>
+        <Button className="w-full">Create account</Button>
       </CardFooter>
     </Card>
   );
