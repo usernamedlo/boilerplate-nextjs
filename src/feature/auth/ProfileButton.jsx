@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/dialog";
 
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { LoginModal } from "@/components/ui/LoginModal";
+import { LoginModal } from "@/src/feature/auth/LoginModal"
 import { signOut } from "next-auth/react";
 
 const ProfileButton = ({ userSession }) => {
